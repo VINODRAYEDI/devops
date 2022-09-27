@@ -23,7 +23,14 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '**\*.sln'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: 'publish'
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+
 - task: PublishPipelineArtifact@1
   inputs:
-    path: '$(Pipeline.Workspace)'
+    targetpath: '$(Build.ArtifactStagingDirectory)'
     artifactName: 'webapp-artifact'
