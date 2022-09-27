@@ -25,9 +25,3 @@ steps:
     solution: '**\*.sln'
 - task: PublishBuildArtifacts@1
 - task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'vinod-azure'
-    appType: 'webApp'
-    WebAppName: 'jaffa123'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
